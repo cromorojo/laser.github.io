@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laser Tattoo Removal - Skin Conditions Guide</title>
+    <style>
+        :root {
+            /* Color Palette */
+            --primary-color: #8B0000;
+            --primary-dark: #660000;
+            --primary-light: #A52A2A;
+            --secondary-color: #FF6347;
+            --accent-color: #4169E1;
+            
+            /* Treatment Status Colors */
+            --contraindicated: #DC143C;
+            --proceed-caution: #FF8C00;
+            --safe-proceed: #228B22;
+            --require-medical: #8A2BE2;
+            
+            /* Background Colors */
+            --bg-contraindicated: #fee;
+            --bg-caution: #fff8e1;
+            --bg-safe: #f0f8f0;
+            --bg-medical: #f8f0ff;
+            
+            /* Neutral Colors */
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --medium-gray: #e9ecef;
+            --dark-gray: #495057;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            
+            /* Typography */
+            --font-family: 'Segoe UI', 'San Francisco', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+            
+            /* Enhanced Font Sizes for Better Readability */
+            --font-xs: 12px;
+            --font-sm: 13px;
+            --font-base: 14px;
+            --font-md: 15px;
+            --font-lg: 16px;
+            --font-xl: 18px;
+            --font-2xl: 20px;
+            --font-3xl: 26px;
+            --font-4xl: 34px;
+            
+            /* Enhanced Spacing for Better Visual Breathing */
+            --space-xs: 6px;
+            --space-sm: 8px;
+            --space-base: 12px;
+            --space-md: 16px;
+            --space-lg: 20px;
+            --space-xl: 24px;
+            --space-2xl: 32px;
+            --space-3xl: 40px;
+            --space-4xl: 48px;
+            
+            /* Border Radius */
+            --radius-sm: 6px;
+            --radius-base: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            
+            /* Enhanced Shadows */
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+            --shadow-base: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 6px 12px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Print Styles */
+        @media print {
+            @page {
+                margin: 0.6in;
+                size: A4;
+            }
+            
+            body { 
+                margin: 0; 
+                font-size: var(--font-base);
+                line-height: 1.4;
+            }
+            .no-print { display: none !important; }
+            .page-break { page-break-before: always; }
+            .avoid-break { page-break-inside: avoid; }
+            .condition-card, .category-section { page-break-inside: avoid; }
+            
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: var(--font-family);
+            font-weight: var(--font-weight-normal);
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--light-gray);
+            padding: var(--space-xl);
+            font-size: var(--font-base);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: var(--space-3xl);
+            border-radius: var(--radius-xl);
+            text-align: center;
+            margin-bottom: var(--space-4xl);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '⚡';
+            position: absolute;
+            top: -30px;
+            right: 40px;
+            font-size: 140px;
+            opacity: 0.1;
+            transform: rotate(15deg);
+        }
+        
+        .header h1 {
+            font-size: var(--font-4xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-md);
+            letter-spacing: -0.5px;
+        }
+        
+        .header .subtitle {
+            font-size: var(--font-2xl);
+            opacity: 0.95;
+            margin-bottom: var(--space-lg);
+            font-weight: var(--font-weight-medium);
+        }
+        
+        .header .warning {
+            background: rgba(255, 255, 255, 0.15);
+            padding: var(--space-lg);
+            border-radius: var(--radius-base);
+            font-size: var(--font-lg);
+            font-weight: var(--font-weight-medium);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-3xl);
+            flex-wrap: wrap;
+            align-items: center;
+            background: var(--white);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-base);
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 320px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: var(--space-md) var(--space-lg);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            font-size: var(--font-lg);
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: var(--space-md) var(--space-xl);
+            border: 2px solid var(--border-color);
+            background: var(--white);
+            border-radius: var(--radius-base);
+            cursor: pointer;
+            font-size: var(--font-base);
+            font-weight: var(--font-weight-medium);
+            transition: all 0.2s ease;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+        }
+
+        .filter-btn:hover {
+            background: var(--light-gray);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+
+        .print-button {
+            background: var(--accent-color);
+            color: var(--white);
+            border: none;
+            padding: var(--space-md) var(--space-2xl);
+            border-radius: var(--radius-base);
+            cursor: pointer;
+            font-size: var(--font-lg);
+            font-weight: var(--font-weight-semibold);
+            transition: all 0.2s ease;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .print-button:hover {
+            background: #3153d4;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Treatment Decision Legend */
+        .treatment-legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: var(--space-xl);
+            margin-bottom: var(--space-4xl);
+            background: var(--white);
+            padding: var(--space-3xl);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            font-weight: var(--font-weight-medium);
+            transition: transform 0.2s ease;
+        }
+
+        .legend-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .legend-contraindicated {
+            background: var(--bg-contraindicated);
+            border-left: 5px solid var(--contraindicated);
+        }
+
+        .legend-caution {
+            background: var(--bg-caution);
+            border-left: 5px solid var(--proceed-caution);
+        }
+
+        .legend-safe {
+            background: var(--bg-safe);
+            border-left: 5px solid var(--safe-proceed);
+        }
+
+        .legend-medical {
+            background: var(--bg-medical);
+            border-left: 5px solid var(--require-medical);
+        }
+
+        .legend-icon {
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .legend-content {
+            flex: 1;
+        }
+
+        .legend-title {
+            font-size: var(--font-lg);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-xs);
+        }
+
+        .legend-description {
+            font-size: var(--font-base);
+            color: var(--dark-gray);
+        }
+
+        /* Category Sections */
+        .category-section {
+            margin-bottom: var(--space-4xl);
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .category-header {
+            padding: var(--space-3xl);
+            font-size: var(--font-3xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+        }
+
+        .category-icon {
+            font-size: 36px;
+            opacity: 0.9;
+        }
+
+        .category-contraindications { background: linear-gradient(135deg, var(--contraindicated) 0%, #B22222 100%); }
+        .category-caution { background: linear-gradient(135deg, var(--proceed-caution) 0%, #FF7F50 100%); }
+        .category-complications { background: linear-gradient(135deg, var(--require-medical) 0%, #9370DB 100%); }
+        .category-skin-types { background: linear-gradient(135deg, var(--accent-color) 0%, #1E90FF 100%); }
+        .category-infections { background: linear-gradient(135deg, #CD853F 0%, #8B4513 100%); }
+        .category-pigmentation { background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%); }
+
+        .conditions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: var(--space-2xl);
+            padding: var(--space-3xl);
+        }
+
+        /* Condition Cards */
+        .condition-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
+            box-shadow: var(--shadow-base);
+            border-left: 6px solid var(--primary-color);
+            transition: all 0.3s ease;
+            position: relative;
+            min-height: 280px;
+        }
+
+        .condition-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .condition-name {
+            font-size: var(--font-2xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--primary-color);
+            margin-bottom: var(--space-lg);
+            padding-right: 120px;
+            line-height: 1.3;
+        }
+
+        .treatment-status {
+            position: absolute;
+            top: var(--space-xl);
+            right: var(--space-xl);
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-base);
+            font-size: var(--font-sm);
+            font-weight: var(--font-weight-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .status-contraindicated {
+            background: var(--contraindicated);
+            color: var(--white);
+        }
+
+        .status-caution {
+            background: var(--proceed-caution);
+            color: var(--white);
+        }
+
+        .status-safe {
+            background: var(--safe-proceed);
+            color: var(--white);
+        }
+
+        .status-medical {
+            background: var(--require-medical);
+            color: var(--white);
+        }
+
+        .condition-details {
+            display: grid;
+            gap: var(--space-lg);
+        }
+
+        .detail-section {
+            padding: var(--space-lg);
+            border-radius: var(--radius-base);
+            border-left: 4px solid;
+        }
+
+        .appearance {
+            background: linear-gradient(145deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left-color: var(--accent-color);
+        }
+
+        .tattoo-impact {
+            background: linear-gradient(145deg, #fdf2f8 0%, #fce7f3 100%);
+            border-left-color: var(--primary-color);
+        }
+
+        .laser-considerations {
+            background: linear-gradient(145deg, #f0fdf4 0%, #dcfce7 100%);
+            border-left-color: var(--safe-proceed);
+        }
+
+        .treatment-modifications {
+            background: linear-gradient(145deg, #fefce8 0%, #fef3c7 100%);
+            border-left-color: var(--proceed-caution);
+        }
+
+        .monitoring-required {
+            background: linear-gradient(145deg, #f3f4f6 0%, #e5e7eb 100%);
+            border-left-color: var(--dark-gray);
+        }
+
+        .detail-label {
+            font-weight: var(--font-weight-bold);
+            color: var(--dark-gray);
+            font-size: var(--font-base);
+            margin-bottom: var(--space-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .detail-value {
+            font-size: var(--font-base);
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        /* Stats Summary */
+        .stats-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--space-xl);
+            margin-bottom: var(--space-4xl);
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: var(--space-2xl);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: var(--shadow-base);
+            border-top: 5px solid var(--primary-color);
+            transition: transform 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-number {
+            font-size: var(--font-4xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--primary-color);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: var(--font-lg);
+            color: var(--dark-gray);
+            margin-top: var(--space-md);
+            font-weight: var(--font-weight-medium);
+        }
+
+        /* Emergency Protocol */
+        .emergency-protocol {
+            background: linear-gradient(135deg, #DC143C 0%, #B22222 100%);
+            color: var(--white);
+            padding: var(--space-4xl);
+            border-radius: var(--radius-xl);
+            margin: var(--space-4xl) 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .emergency-title {
+            font-size: var(--font-3xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-2xl);
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+        }
+
+        .emergency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-xl);
+        }
+
+        .emergency-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: var(--space-2xl);
+            border-radius: var(--radius-lg);
+            border-left: 5px solid var(--white);
+            backdrop-filter: blur(10px);
+        }
+
+        .emergency-item h4 {
+            margin-bottom: var(--space-lg);
+            font-size: var(--font-xl);
+            font-weight: var(--font-weight-bold);
+        }
+
+        .emergency-item ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .emergency-item li {
+            margin: var(--space-sm) 0;
+            padding-left: var(--space-xl);
+            position: relative;
+            font-size: var(--font-base);
+            line-height: 1.5;
+        }
+
+        .emergency-item li:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--white);
+            font-weight: var(--font-weight-bold);
+            font-size: var(--font-lg);
+        }
+
+        /* Protocol Box */
+        .protocol-box {
+            background: linear-gradient(145deg, #fff5f2 0%, #ffe8e1 100%);
+            border: 3px solid var(--secondary-color);
+            border-radius: var(--radius-xl);
+            padding: var(--space-3xl);
+            margin: var(--space-4xl) 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .protocol-title {
+            font-weight: var(--font-weight-bold);
+            color: var(--primary-color);
+            font-size: var(--font-2xl);
+            margin-bottom: var(--space-xl);
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .protocol-steps {
+            list-style: none;
+            counter-reset: protocol-counter;
+        }
+
+        .protocol-steps li {
+            counter-increment: protocol-counter;
+            margin: var(--space-lg) 0;
+            padding-left: var(--space-4xl);
+            position: relative;
+            font-size: var(--font-base);
+            line-height: 1.6;
+        }
+
+        .protocol-steps li:before {
+            content: counter(protocol-counter);
+            position: absolute;
+            left: 0;
+            top: 2px;
+            background: var(--primary-color);
+            color: var(--white);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-sm);
+            font-weight: var(--font-weight-bold);
+        }
+
+        /* Disclaimer Section */
+        .disclaimer {
+            background: var(--white);
+            padding: var(--space-3xl);
+            border-radius: var(--radius-lg);
+            margin-top: var(--space-4xl);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            border: 2px solid var(--medium-gray);
+        }
+
+        .disclaimer h3 {
+            color: var(--primary-color);
+            margin-bottom: var(--space-xl);
+            font-size: var(--font-2xl);
+        }
+
+        .disclaimer p {
+            font-size: var(--font-lg);
+            line-height: 1.7;
+            color: var(--dark-gray);
+            margin-bottom: var(--space-lg);
+        }
+
+        .disclaimer .version-info {
+            font-size: var(--font-base);
+            color: var(--dark-gray);
+            font-weight: var(--font-weight-medium);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .conditions-grid {
+                grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            body { 
+                padding: var(--space-lg); 
+            }
+            
+            .header {
+                padding: var(--space-2xl);
+            }
+            
+            .header h1 { 
+                font-size: var(--font-3xl); 
+            }
+            
+            .header .subtitle {
+                font-size: var(--font-xl);
+            }
+            
+            .controls { 
+                flex-direction: column; 
+                align-items: stretch; 
+            }
+            
+            .conditions-grid { 
+                grid-template-columns: 1fr;
+                gap: var(--space-xl);
+                padding: var(--space-xl);
+            }
+            
+            .stats-summary { 
+                grid-template-columns: repeat(2, 1fr); 
+            }
+            
+            .treatment-legend { 
+                grid-template-columns: 1fr; 
+            }
+            
+            .emergency-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .condition-name {
+                font-size: var(--font-xl);
+                padding-right: 80px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-summary { 
+                grid-template-columns: 1fr; 
+            }
+            
+            .search-box {
+                min-width: 100%;
+            }
+            
+            .filter-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .treatment-status {
+                position: static;
+                margin-bottom: var(--space-md);
+                display: inline-block;
+            }
+            
+            .condition-name {
+                padding-right: 0;
+            }
+        }
+
+        /* Hidden state for filtering */
+        .condition-card.hidden {
+            display: none;
+        }
+
+        .category-section.hidden {
+            display: none;
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Focus styles for accessibility */
+        .filter-btn:focus,
+        .print-button:focus,
+        .search-box input:focus {
+            outline: 3px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>⚡ LASER TATTOO REMOVAL</h1>
+        <div class="subtitle">Skin Conditions & Treatment Decision Guide</div>
+        <div class="warning">
+            ⚠️ Professional Use Only - Always Consult Medical History Before Treatment
+        </div>
+    </div>
+
+    <div class="controls no-print">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Search conditions or symptoms..." aria-label="Search conditions">
+        </div>
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all" aria-pressed="true">All Conditions</button>
+            <button class="filter-btn" data-filter="contraindicated" aria-pressed="false">Contraindicated</button>
+            <button class="filter-btn" data-filter="caution" aria-pressed="false">Proceed with Caution</button>
+            <button class="filter-btn" data-filter="medical" aria-pressed="false">Medical Clearance</button>
+        </div>
+        <button class="print-button" onclick="window.print()" aria-label="Print guide">
+            <span>🖨️</span>
+            Print Guide
+        </button>
+    </div>
+
+    <div class="treatment-legend">
+        <div class="legend-item legend-contraindicated">
+            <div class="legend-icon">🚫</div>
+            <div class="legend-content">
+                <div class="legend-title">Contraindicated</div>
+                <div class="legend-description">Do not proceed with treatment</div>
+            </div>
+        </div>
+        <div class="legend-item legend-caution">
+            <div class="legend-icon">⚠️</div>
+            <div class="legend-content">
+                <div class="legend-title">Proceed with Caution</div>
+                <div class="legend-description">Modified parameters required</div>
+            </div>
+        </div>
+        <div class="legend-item legend-safe">
+            <div class="legend-icon">✅</div>
+            <div class="legend-content">
+                <div class="legend-title">Safe to Proceed</div>
+                <div class="legend-description">Standard protocol applies</div>
+            </div>
+        </div>
+        <div class="legend-item legend-medical">
+            <div class="legend-icon">🩺</div>
+            <div class="legend-content">
+                <div class="legend-title">Medical Clearance</div>
+                <div class="legend-description">Physician approval required</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="stats-summary">
+        <div class="stat-card">
+            <div class="stat-number">38</div>
+            <div class="stat-label">Conditions Covered</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">10</div>
+            <div class="stat-label">Absolute Contraindications</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">15</div>
+            <div class="stat-label">Require Medical Clearance</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">5</div>
+            <div class="stat-label">Treatment Categories</div>
+        </div>
+    </div>
+
+    <!-- Absolute Contraindications -->
+    <div class="category-section" data-category="contraindications">
+        <div class="category-header category-contraindications">
+            <div class="category-icon">🚫</div>
+            <h2>ABSOLUTE CONTRAINDICATIONS</h2>
+        </div>
+        <div class="conditions-grid">
+            <div class="condition-card" data-treatment="contraindicated">
+                <div class="treatment-status status-contraindicated">Contraindicated</div>
+                <div class="condition-name">Malignant Melanoma</div>
+                <div class="condition-details">
+                    <div class="detail-section appearance">
+                        <div class="detail-label">Appearance</div>
+                        <div class="detail-value">Dark, irregular mole with asymmetry, border irregularity, color variation, diameter >6mm (ABCDE criteria)</div>
+                    </div>
+                    <div class="detail-section tattoo-impact">
+                        <div class="detail-label">Critical Risk</div>
+                        <div class="detail-value">Laser energy can stimulate melanoma cells and cause metastasis. Any suspicious lesions must be biopsied before treatment.</div>
+                    </div>
+                    <div class="detail-section laser-considerations">
+                        <div class="detail-label">Protocol</div>
+                        <div class="detail-value">NEVER treat over or near suspicious moles. Refer immediately to dermatologist for evaluation and biopsy.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="condition-card" data-treatment="contraindicated">
+                <div class="treatment-status status-contraindicated">Contraindicated</div>
+                <div class="condition-name">Active Herpes Outbreak</div>
+                <div class="condition-details">
+                    <div class="detail-section appearance">
+                        <div class="detail-label">Appearance</div>
+                        <div class="detail-value">Painful vesicles, blisters, or ulcers typically around mouth, lips, or genitals with burning sensation</div>
+                    </div>
+                    <div class="detail-section tattoo-impact">
+                        <div class="detail-label">Treatment Risk</div>
+                        <div class="detail-value">Laser treatment during active outbreak worsens infection, delays healing, and significantly increases scarring risk.</div>
+                    </div>
+                    <div class="detail-section treatment-modifications">
+                        <div class="detail-label">Protocol</div>
+                        <div class="detail-value">Wait until outbreak completely resolves (7-14 days). Consider prophylactic antiviral therapy for recurrent cases.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="condition-card" data-treatment="contraindicated">
+                <div class="treatment-status status-contraindicated">Contraindicated</div>
+                <div class="condition-name">Keloid Scarring History</div>
+                <div class="condition-details">
+                    <div class="detail-section appearance">
+                        <div class="detail-label">Appearance</div>
+                        <div class="detail-value">Raised, thickened scar tissue extending beyond original wound boundaries, often with continued growth</div>
+                    </div>
+                    <div class="detail-section tattoo-impact">
+                        <div class="detail-label">Risk Assessment</div>
+                        <div class="detail-value">Laser energy triggers excessive collagen production, worsening keloid formation and creating permanent disfigurement.</div>
+                    </div>
+                    <div class="detail-section laser-considerations">
+                        <div class="detail-label">Alternative Options</div>
+                        <div class="detail-value">Consider chemical peels, dermabrasion, or surgical excision with radiation therapy by specialist only.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="condition-card" data-treatment="contraindicated">
+                <div class="treatment-status status-contraindicated">Contraindicated</div>
+                <div class="condition-name">Pregnancy & Breastfeeding</div>
+                <div class="condition-details">
+                    <div class="detail-section appearance">
+                        <div class="detail-label">Patient Status</div>
+                        <div class="detail-value">Confirmed pregnancy at any stage or active breastfeeding period</div>
+                    </div>
+                    <div class="detail-section tattoo-impact">
+                        <div class="detail-label">Safety Concerns</div>
+                        <div class="detail-value">Unknown effects of laser energy on fetal development. Pigment particles released may cross placental barrier.</div>
+                    </div>
+                    <div class="detail-section treatment-modifications">
+                        <div class="detail-label">Waiting Period</div>
+                        <div class="detail-value">Wait until after delivery and cessation of breastfeeding (minimum 3 months post-weaning recommended).</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="condition-card" data-treatment="contraindicated">
+                <div class="treatment-status status-contraindicated">Contraindicated</div>
+                <div class="condition-name">Active Skin Cancer</div>
+                <div class="condition-details">
+                    <div class="detail-section appearance">
+                        <div class="detail-label">Types</div>
+                        <div class="detail-value">Squamous cell carcinoma, basal cell carcinoma, or any malignancy in or near treatment area</div>
+                    </div>
+                    <div class="detail-section tattoo-impact">
+                        <div class="detail-label">Treatment Risk</div>
+                        <div class="detail-value">Laser energy can interfere with cancer treatment protocols and potentially stimulate tumor growth or spread.</div>
+                    </div>
+                    <div class="detail-section monitoring-required">
+                        <div class="detail-label">Required Action</div>
+                        <div class="detail-value">Complete cancer treatment first. Obtain written oncologist clearance before considering tattoo removal.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- Proceed with Caution -->
+    <div class="category-section" data-category="caution">
+        <div class="category-header category-caution">
+            <div class="category-icon">⚠️</div>
+            <h2>PROCEED WITH CAUTION</h2>
+        </div>
+        <div class="conditions-grid">
+            <div class="condition-card" data-treatment="caution">
+                <div class="treatment-status status-caution">Caution Required</div>
+                <div class="condition-name">Eczema/Atopic Dermatitis</div>
+                <div class="condition-details">
+                    <div class="detail-section appearance">
+                        <div class="detail-label">Appearance</div>
+                        <div class="detail-value">Red, inflamed patches with intense itching, dryness, possible crusting or weeping areas</div>
+                    </div>
+                    <div class="detail-section tattoo-impact">
+                        <div class="detail-label">Treatment Challenges</div>
+                        <div class="detail-value">Increased risk of post-inflammatory hyperpigmentation, delayed healing, condition flare-ups triggered by laser trauma.</div>
+                    </div>
+                    <div class="detail-section treatment-modifications">
+                        <div class="detail-label">Modified Protocol</div>
+                        <div class="detail-value">Reduce fluence by 20-30%, extend intervals to 8-10 weeks, pre-treat with topical corticosteroids, intensive moisturizing regimen.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="condition-card" data-treatment="caution">
+                <div class="treatment-status status-caution">Caution Required</div>
+                <div class="condition-name">Psoriasis</div>
+                <div class="condition-details">
+                    <div class="detail-section appearance">
+                        <div class="detail-label">Appearance</div>
+                        <div class="detail-value">Red, raised plaques with thick silvery scales, commonly on elbows, knees, scalp, and lower back</div>
+                    </div>
+                    <div class="detail-section tattoo-impact">
+                        <div class="detail-label">Koebner Phenomenon</div>
+                        <div class="detail-value">Laser trauma can trigger new psoriatic lesions at treatment site (Koebner phenomenon). May worsen existing plaques.</div>
+                    </div>
+                    <div class="detail-section treatment-modifications">
+                        <div class="detail-label">Treatment Strategy</div>
+                        <div class="detail-value">Treat only during stable/remission phase. Reduce fluence by 25%. Consider topical therapy pre/post treatment. Monitor closely.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="condition-card" data-treatment="caution">
+                <div class="treatment-status status-caution">Caution Required</div>
+                <div class="condition-name">Vitiligo</div>
+                <div class="condition-details">
+                    <div class="detail-section appearance">
+                        <div class="detail-label">Appearance</div>
+                        <div class="detail-value">Well-demarcated white patches with complete loss of pigmentation, often symmetrical distribution</div>
+                    </div>
+                    <div class="detail-section tattoo-impact">
+                        <div class="detail-label">Pigmentation Risks</div>
+                        <div class="detail-value">Risk of triggering new vitiligo patches, unpredictable response in adjacent normal skin, permanent hypopigmentation.</div>
+                    </div>
+                    <div class="detail-section treatment-modifications">
+                        <div class="detail-label">Special Protocol</div>
+                        <div class="detail-value">Avoid treating through vitiligo patches. Use conservative settings on surrounding skin. Set realistic expectations about pigment outcomes.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="condition-card" data-treatment="caution">
+                <div class="treatment-status status-caution">Caution Required</div>
+                <div class="condition-name">Recent Isotretinoin Use</div>
+                <div class="condition-details">
+                    <div class="detail-section appearance">
+                        <div class="detail-label">Patient History</div>
+                        <div class="detail-value">Accutane/isotretinoin use within past 6-12 months, regardless of dosage or duration</div>
+                    </div>
+                    <div class="detail-section tattoo-impact">
+                        <div class="detail-label">Healing Complications</div>
+                        <div class="detail-value">Significantly impaired wound healing, increased scarring risk, abnormal collagen response, delayed epithelialization.</div>
+                    </div>
+                    <div class="detail-section treatment-modifications">
+                        <div class="detail-label">Waiting Protocol</div>
+                        <div class="detail-value">Wait minimum 6 months after last dose. Consider 12 months for high-dose or long-term use. Mandatory patch testing.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="condition-card" data-treatment="caution">
+                <div class="treatment-status status-caution">Caution Required</div>
+                <div class="condition-name">Hypertrophic Scarring Tendency</div>
+                <div class="condition-details">
+                    <div class="detail-section appearance">
+                        <div class="detail-label">History Indicators</div>
+                        <div class="detail-value">Previous raised scars, slow healing history, excessive scar tissue formation, family history of poor healing</div>
+                    </div>
+                    <div class="detail-section tattoo-impact">
+                        <div class="detail-label">Scarring Risk</div>
+                        <div class="detail-value">Higher risk of textural changes, raised treatment areas, permanent skin alterations, patient dissatisfaction.</div>
+                    </div>
+                    <div class="detail-section treatment-modifications">
+                        <div class="detail-label">Risk Mitigation</div>
+                        <div class="detail-value">Ultra-conservative settings, longer healing intervals, silicone gel post-treatment, extensive patch testing, frequent monitoring.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Medical Clearance Required -->
+    <div class="category-section" data-category="medical">
+        <div class="category-header category-complications">
+            <div class="category-icon">🩺</div>
+            <h2>MEDICAL CLEARANCE REQUIRED</h2>
+        </div>
+        <div class="conditions-grid">
+            <div class="condition-card" data-treatment="medical">
+                <div class="treatment-status status-medical">Medical Clearance</div>
+                <div class="condition-name">Diabetes Mellitus</div>
+                <div class="condition-details">
+                    <div class="detail-section appearance">
+                        <div class="detail-label">Patient Condition</div>
+                        <div class="detail-value">Type 1 or Type 2 diabetes, especially with poor glycemic control (HbA1c >7%)</div>
+                    </div>
+                    <div class="detail-section tattoo-impact">
+                        <div class="detail-label">Healing Complications</div>
+                        <div class="detail-value">Delayed wound healing, increased infection risk, poor tissue repair, peripheral neuropathy affecting sensation.</div>
+                    </div>
+                    <div class="detail-section monitoring-required">
+                        <div class="detail-label">Medical Requirements</div>
+                        <div class="detail-value">Recent HbA1c <7%, endocrinologist clearance, careful monitoring for infection signs, extended healing protocols.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="condition-card" data-treatment="medical">
+                <div class="treatment-status status-medical">Medical Clearance</div>
+                <div class="condition-name">Autoimmune Disorders</div>
+                <div class="condition-details">
+                    <div class="detail-section appearance">
+                        <div class="detail-label">Conditions Included</div>
+                        <div class="detail-value">Lupus, rheumatoid arthritis, scleroderma, autoimmune thyroid disease, inflammatory bowel disease</div>
+                    </div>
+                    <div class="detail-section tattoo-impact">
+                        <div class="detail-label">Treatment Risks</div>
+                        <div class="detail-value">Unpredictable healing patterns, potential to trigger disease flares, medication interactions affecting skin response.</div>
+                    </div>
+                    <div class="detail-section treatment-modifications">
+                        <div class="detail-label">Specialist Requirements</div>
+                        <div class="detail-value">Rheumatologist/specialist written clearance required. May need temporary medication modifications under medical supervision.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="condition-card" data-treatment="medical">
+                <div class="treatment-status status-medical">Medical Clearance</div>
+                <div class="condition-name">Blood Clotting Disorders</div>
+                <div class="condition-details">
+                    <div class="detail-section appearance">
+                        <div class="detail-label">Conditions</div>
+                        <div class="detail-value">Hemophilia, thrombocytopenia, anticoagulant therapy (warfarin, heparin, DOACs)</div>
+                    </div>
+                    <div class="detail-section tattoo-impact">
+                        <div class="detail-label">Bleeding Risks</div>
+                        <div class="detail-value">Excessive bleeding during/after treatment, hematoma formation, prolonged healing, bruising complications.</div>
+                    </div>
+                    <div class="detail-section monitoring-required">
+                        <div class="detail-label">Hematology Protocol</div>
+                        <div class="detail-value">Recent coagulation studies, possible medication timing adjustment, emergency bleeding protocols, pressure dressing supplies.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="condition-card" data-treatment="medical">
+                <div class="treatment-status status-medical">Medical Clearance</div>
+                <div class="condition-name">Cardiac Devices</div>
+                <div class="condition-details">
+                    <div class="detail-section appearance">
+                        <div class="detail-label">Device Types</div>
+                        <div class="detail-value">Implanted pacemaker, defibrillator (ICD), cardiac resynchronization therapy devices</div>
+                    </div>
+                    <div class="detail-section tattoo-impact">
+                        <div class="detail-label">Electromagnetic Risk</div>
+                        <div class="detail-value">Laser systems may interfere with device function, potentially causing malfunction, inappropriate shocks, or rhythm disturbances.</div>
+                    </div>
+                    <div class="detail-section laser-considerations">
+                        <div class="detail-label">Cardiology Protocol</div>
+                        <div class="detail-value">Cardiologist written approval required. Device interrogation pre/post treatment. Emergency cardiac protocols must be available.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="condition-card" data-treatment="medical">
+                <div class="treatment-status status-medical">Medical Clearance</div>
+                <div class="condition-name">Immunosuppression</div>
+                <div class="condition-details">
+                    <div class="detail-section appearance">
+                        <div class="detail-label">Patient Categories</div>
+                        <div class="detail-value">Organ transplant recipients, chemotherapy patients, chronic steroid users, HIV with low CD4 counts</div>
+                    </div>
+                    <div class="detail-section tattoo-impact">
+                        <div class="detail-label">Healing Complications</div>
+                        <div class="detail-value">Severely impaired wound healing, increased infection risk, unpredictable pigment response, delayed recovery.</div>
+                    </div>
+                    <div class="detail-section treatment-modifications">
+                        <div class="detail-label">Alternative Approach</div>
+                        <div class="detail-value">Consider tattoo cover-up rather than removal. If proceeding, requires infectious disease or transplant specialist clearance.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- Skin Type Considerations -->
+    <div class="category-section" data-category="skin-types">
+        <div class="category-header category-skin-types">
+            <div class="category-icon">🎨</div>
+            <h2>SKIN TYPE CONSIDERATIONS</h2>
+        </div>
+        <div class="conditions-grid">
+            <div class="condition-card" data-treatment="caution">
+                <div class="treatment-status status-caution">High Risk</div>
+                <div class="condition-name">Fitzpatrick Type V-VI</div>
+                <div class="condition-details">
+                    <div class="detail-section appearance">
+                        <div class="detail-label">Skin Characteristics</div>
+                        <div class="detail-value">Dark brown to black skin, rarely burns, tans very easily, high melanin content</div>
+                    </div>
+                    <div class="detail-section tattoo-impact">
+                        <div class="detail-label">Pigmentation Risks</div>
+                        <div class="detail-value">Very high risk of hypopigmentation, keloid formation, post-inflammatory hyperpigmentation, paradoxical darkening.</div>
+                    </div>
+                    <div class="detail-section treatment-modifications">
+                        <div class="detail-label">Laser Protocol</div>
+                        <div class="detail-value">Nd:YAG 1064nm ONLY. Reduce fluence 30-50%, longer pulse durations, aggressive cooling, 10-12 week intervals minimum.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="condition-card" data-treatment="safe">
+                <div class="treatment-status status-safe">Optimal Response</div>
+                <div class="condition-name">Fitzpatrick Type I-II</div>
+                <div class="condition-details">
+                    <div class="detail-section appearance">
+                        <div class="detail-label">Skin Characteristics</div>
+                        <div class="detail-value">Very fair to fair skin, burns easily, minimal tanning ability, low melanin content</div>
+                    </div>
+                    <div class="detail-section tattoo-impact">
+                        <div class="detail-label">Treatment Response</div>
+                        <div class="detail-value">Excellent response to most laser types, minimal pigmentation changes, faster clearance rates, fewer sessions required.</div>
+                    </div>
+                    <div class="detail-section laser-considerations">
+                        <div class="detail-label">Optimal Settings</div>
+                        <div class="detail-value">Multiple wavelengths effective (755nm, 1064nm, picosecond). Standard fluences well-tolerated. 6-8 week intervals.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="condition-card" data-treatment="caution">
+                <div class="treatment-status status-caution">Wait Required</div>
+                <div class="condition-name">Recently Tanned Skin</div>
+                <div class="condition-details">
+                    <div class="detail-section appearance">
+                        <div class="detail-label">Skin State</div>
+                        <div class="detail-value">Recent sun exposure, natural tanning, or artificial tanning (spray tan, tanning beds)</div>
+                    </div>
+                    <div class="detail-section tattoo-impact">
+                        <div class="detail-label">Treatment Complications</div>
+                        <div class="detail-value">Increased melanin competes with tattoo pigment for laser energy, higher burn risk, unpredictable pigment changes.</div>
+                    </div>
+                    <div class="detail-section treatment-modifications">
+                        <div class="detail-label">Waiting Protocol</div>
+                        <div class="detail-value">Wait 4-6 weeks for natural tan to fade, 2-3 weeks for artificial tan. Mandate strict sun protection throughout treatment.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post-Treatment Complications -->
+    <div class="category-section" data-category="complications">
+        <div class="category-header category-complications">
+            <div class="category-icon">⚡</div>
+            <h2>POST-TREATMENT COMPLICATIONS</h2>
+        </div>
+        <div class="conditions-grid">
+            <div class="condition-card" data-treatment="caution">
+                <div class="treatment-status status-caution">Monitor Closely</div>
+                <div class="condition-name">Hypopigmentation</div>
+                <div class="condition-details">
+                    <div class="detail-section appearance">
+                        <div class="detail-label">Appearance</div>
+                        <div class="detail-value">Permanent white or lighter patches where tattoo was removed, contrast with surrounding normal skin</div>
+                    </div>
+                    <div class="detail-section tattoo-impact">
+                        <div class="detail-label">Risk Factors</div>
+                        <div class="detail-value">5-15% incidence, higher in darker skin types, over-treatment, excessive overlapping passes, aggressive parameters.</div>
+                    </div>
+                    <div class="detail-section treatment-modifications">
+                        <div class="detail-label">Prevention Strategy</div>
+                        <div class="detail-value">Conservative fluences, avoid overlapping pulses, 8+ week intervals, proper endpoint assessment, test spots mandatory.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="condition-card" data-treatment="contraindicated">
+                <div class="treatment-status status-contraindicated">Emergency</div>
+                <div class="condition-name">Signs of Infection</div>
+                <div class="condition-details">
+                    <div class="detail-section appearance">
+                        <div class="detail-label">Warning Signs</div>
+                        <div class="detail-value">Increasing pain after 48h, purulent discharge, spreading erythema, fever, red streaking, malodor</div>
+                    </div>
+                    <div class="detail-section tattoo-impact">
+                        <div class="detail-label">Emergency Protocol</div>
+                        <div class="detail-value">Immediate antibiotic therapy, wound culture, discontinue all laser treatments until complete resolution.</div>
+                    </div>
+                    <div class="detail-section monitoring-required">
+                        <div class="detail-label">Immediate Action</div>
+                        <div class="detail-value">Refer to physician same day. Document with photos. Consider hospitalization for systemic symptoms.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="condition-card" data-treatment="caution">
+                <div class="treatment-status status-caution">Monitor Closely</div>
+                <div class="condition-name">Textural Changes</div>
+                <div class="condition-details">
+                    <div class="detail-section appearance">
+                        <div class="detail-label">Appearance</div>
+                        <div class="detail-value">Raised, depressed, or rough skin texture different from surrounding tissue, permanent surface changes</div>
+                    </div>
+                    <div class="detail-section tattoo-impact">
+                        <div class="detail-label">Contributing Factors</div>
+                        <div class="detail-value">Multiple treatments, high fluences, inadequate healing time, patient non-compliance with aftercare protocols.</div>
+                    </div>
+                    <div class="detail-section monitoring-required">
+                        <div class="detail-label">Management</div>
+                        <div class="detail-value">Early intervention with topical treatments, consider fractional resurfacing for established changes, realistic expectations.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="emergency-protocol">
+        <div class="emergency-title">
+            <span style="font-size: 32px;">🚨</span>
+            EMERGENCY PROTOCOLS & IMMEDIATE ACTIONS
+        </div>
+        <div class="emergency-grid">
+            <div class="emergency-item">
+                <h4>Severe Burns/Blistering</h4>
+                <ul>
+                    <li>Stop treatment immediately</li>
+                    <li>Apply cold compress (not ice directly)</li>
+                    <li>Document with standardized photos</li>
+                    <li>Refer to burn specialist within 24 hours</li>
+                    <li>No topical medications without MD approval</li>
+                    <li>Schedule follow-up within 48 hours</li>
+                </ul>
+            </div>
+            <div class="emergency-item">
+                <h4>Infection Warning Signs</h4>
+                <ul>
+                    <li>Increasing pain after 48 hours</li>
+                    <li>Purulent or malodorous discharge</li>
+                    <li>Red streaking from treatment site</li>
+                    <li>Fever or systemic symptoms</li>
+                    <li>Immediate physician referral required</li>
+                    <li>Consider emergency department if severe</li>
+                </ul>
+            </div>
+            <div class="emergency-item">
+                <h4>Allergic Reactions</h4>
+                <ul>
+                    <li>Widespread urticaria/hives</li>
+                    <li>Difficulty breathing or swallowing</li>
+                    <li>Facial swelling (lips, tongue, throat)</li>
+                    <li>Call emergency services immediately</li>
+                    <li>Administer epinephrine if available</li>
+                    <li>Monitor vital signs continuously</li>
+                </ul>
+            </div>
+            <div class="emergency-item">
+                <h4>Abnormal Scarring</h4>
+                <ul>
+                    <li>Raised tissue beyond treatment borders</li>
+                    <li>Deep depression or skin atrophy</li>
+                    <li>Persistent induration after 4 weeks</li>
+                    <li>Dermatology consultation required</li>
+                    <li>Consider silicone gel therapy</li>
+                    <li>Document progression with photos</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="protocol-box">
+        <div class="protocol-title">
+            <span style="font-size: 24px;">📋</span>
+            ESSENTIAL PRE-TREATMENT ASSESSMENT PROTOCOL
+        </div>
+        <ol class="protocol-steps">
+            <li>Complete comprehensive medical history including all medications, supplements, and recent treatments</li>
+            <li>Perform thorough skin examination of treatment area and evaluate surrounding tissue health</li>
+            <li>Document any suspicious lesions with photography and refer for dermatological evaluation</li>
+            <li>Assess Fitzpatrick skin type and document recent sun exposure or tanning history</li>
+            <li>Review previous tattoo removal treatments, complications, and healing patterns</li>
+            <li>Evaluate healing from recent procedures, injuries, or infections in treatment area</li>
+            <li>Photograph tattoo with standardized lighting, measurement reference, and color calibration</li>
+            <li>Perform mandatory patch test with planned parameters in inconspicuous area</li>
+            <li>Obtain comprehensive written informed consent after thorough risk discussion</li>
+            <li>Schedule follow-up within 48-72 hours for first treatment response assessment and monitoring</li>
+        </ol>
+    </div>
+
+    <div class="disclaimer">
+        <h3>Professional Disclaimer & Legal Requirements</h3>
+        <p>
+            This guide is for professional use only by qualified laser practitioners. Always obtain comprehensive medical history, 
+            perform patch testing, and maintain current professional liability insurance. When in doubt about any condition or 
+            patient suitability, refer to appropriate medical specialists.
+        </p>
+        <p>
+            Treatment decisions should always be individualized based on patient assessment, medical history, and clinical judgment. 
+            This guide does not replace proper medical training or professional consultation.
+        </p>
+        <div class="version-info">
+            <strong>© 2025 Laser Tattoo Removal Professional Guidelines</strong> | 
+            Version 3.2 | Updated with latest safety protocols and evidence-based recommendations
+        </div>
+    </div>
+
+    <script>
+        // Enhanced functionality for tattoo removal guide
+        function initializeGuide() {
+            setupSearch();
+            setupFilters();
+            setupAccessibility();
+            setupPrintOptimization();
+        }
+
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('input', function(e) {
+                    const searchTerm = e.target.value.toLowerCase();
+                    filterConditions(searchTerm);
+                });
+            }
+        }
+
+        function setupFilters() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update ARIA states
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.setAttribute('aria-pressed', 'false');
+                    });
+                    
+                    this.classList.add('active');
+                    this.setAttribute('aria-pressed', 'true');
+                    
+                    const filterType = this.getAttribute('data-filter');
+                    filterByTreatmentStatus(filterType);
+                });
+            });
+        }
+
+        function setupAccessibility() {
+            // Add keyboard navigation for cards
+            const conditionCards = document.querySelectorAll('.condition-card');
+            conditionCards.forEach(card => {
+                card.setAttribute('tabindex', '0');
+                card.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+        }
+
+        function setupPrintOptimization() {
+            window.addEventListener('beforeprint', function() {
+                document.body.classList.add('printing');
+                // Expand any collapsed content for printing
+                const hiddenCards = document.querySelectorAll('.condition-card.hidden');
+                hiddenCards.forEach(card => card.classList.remove('hidden'));
+            });
+
+            window.addEventListener('afterprint', function() {
+                document.body.classList.remove('printing');
+            });
+        }
+
+        function filterConditions(searchTerm) {
+            const conditionCards = document.querySelectorAll('.condition-card');
+            const categories = document.querySelectorAll('.category-section');
+            
+            conditionCards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(searchTerm) || searchTerm === '') {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // Hide empty categories
+            categories.forEach(section => {
+                const visibleCards = section.querySelectorAll('.condition-card:not(.hidden)');
+                if (visibleCards.length === 0 && searchTerm !== '') {
+                    section.classList.add('hidden');
+                } else {
+                    section.classList.remove('hidden');
+                }
+            });
+        }
+
+        function filterByTreatmentStatus(status) {
+            const conditionCards = document.querySelectorAll('.condition-card');
+            const categories = document.querySelectorAll('.category-section');
+            
+            conditionCards.forEach(card => {
+                if (status === 'all') {
+                    card.classList.remove('hidden');
+                } else {
+                    const treatmentStatus = card.getAttribute('data-treatment');
+                    if (treatmentStatus === status) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                }
+            });
+
+            // Hide empty categories
+            categories.forEach(section => {
+                const visibleCards = section.querySelectorAll('.condition-card:not(.hidden)');
+                if (visibleCards.length === 0) {
+                    section.classList.add('hidden');
+                } else {
+                    section.classList.remove('hidden');
+                }
+            });
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initializeGuide);
+
+        // Enhanced keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Ctrl/Cmd + P for print
+            if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+                e.preventDefault();
+                window.print();
+            }
+            
+            // Ctrl/Cmd + F for search focus
+            if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+                e.preventDefault();
+                const searchInput = document.getElementById('searchInput');
+                if (searchInput) {
+                    searchInput.focus();
+                }
+            }
+
+            // Number keys for quick filter access
+            if (e.key >= '1' && e.key <= '4' && (e.ctrlKey || e.metaKey)) {
+                e.preventDefault();
+                const filterButtons = document.querySelectorAll('.filter-btn');
+                const index = parseInt(e.key) - 1;
+                if (filterButtons[index]) {
+                    filterButtons[index].click();
+                }
+            }
+        });
+
+        // Smooth scrolling for better UX
+        function scrollToCategory(categoryId) {
+            const category = document.querySelector(`[data-category="${categoryId}"]`);
+            if (category) {
+                category.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Add ripple effect for interactive elements
+        function addRippleEffect() {
+            const buttons = document.querySelectorAll('.filter-btn, .print-button, .condition-card');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.cssText = `
+                        position: absolute;
+                        width: ${size}px;
+                        height: ${size}px;
+                        left: ${x}px;
+                        top: ${y}px;
+                        background: rgba(255, 255, 255, 0.3);
+                        border-radius: 50%;
+                        transform: scale(0);
+                        animation: ripple 0.6s linear;
+                        pointer-events: none;
+                    `;
+                    
+                    this.style.position = 'relative';
+                    this.style.overflow = 'hidden';
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        }
+
+        // Add CSS for ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize ripple effects
+        document.addEventListener('DOMContentLoaded', addRippleEffect);
+    </script>
+</body>
+</html>
