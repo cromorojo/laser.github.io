@@ -21,6 +21,7 @@
             --light-orange: #fff7ed;
             --medium-gray: #6b7280;
             --dark-gray: #374151;
+            --text-dark: #1f2937;
             --border-color: #f3f4f6;
             
             /* Treatment Status Colors - Medical Grade */
@@ -364,7 +365,7 @@
 
         .legend-description {
             font-size: var(--text-sm);
-            color: var(--medium-gray);
+            color: var(--text-dark);
         }
 
         /* Stats Summary */
@@ -399,7 +400,7 @@
 
         .stat-label {
             font-size: var(--text-base);
-            color: var(--medium-gray);
+            color: var(--text-dark);
             margin-top: var(--space-3);
             font-weight: var(--font-weight-medium);
         }
@@ -650,6 +651,7 @@
             position: relative;
             font-size: var(--text-base);
             line-height: 1.6;
+            color: var(--dark-gray);
         }
 
         .protocol-steps li:before {
@@ -690,13 +692,13 @@
         .disclaimer p {
             font-size: var(--text-base);
             line-height: 1.7;
-            color: var(--medium-gray);
+            color: var(--text-dark);
             margin-bottom: var(--space-4);
         }
 
         .disclaimer .version-info {
             font-size: var(--text-sm);
-            color: var(--medium-gray);
+            color: var(--text-dark);
             font-weight: var(--font-weight-medium);
         }
 
@@ -825,9 +827,9 @@
                 <span>📋</span>
                 Consultation Reference
             </a>
-            <a href="#protocol" class="nav-button" aria-label="Jump to assessment protocol">
-                <span>✓</span>
-                Assessment Protocol
+            <a href="forms.html" class="nav-button" aria-label="Access consultation forms">
+                <span>📝</span>
+                Consultation Forms
             </a>
         </nav>
 
@@ -1398,7 +1400,7 @@
             </div>
         </div>
 
-        <div class="protocol-box">
+        <div class="protocol-box" id="protocol">
             <div class="protocol-title">
                 <span style="font-size: 24px;">📋</span>
                 ESSENTIAL PRE-TREATMENT ASSESSMENT PROTOCOL
