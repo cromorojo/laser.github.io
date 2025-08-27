@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kirby-Desai Tattoo Removal Scale - VTCT Level 5</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #fff8f5, #ffefe8);
+            min-height: 100vh;
+        }
+        
+        .scale-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.15);
+            overflow: hidden;
+            border: 1px solid #ffccbc;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(255, 107, 53, 0.3);
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        
+        .header p {
+            margin: 5px 0 0 0;
+            opacity: 0.95;
+            font-size: 14px;
+        }
+        
+        .section {
+            padding: 20px;
+            border-bottom: 2px solid #fff5f2;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #d84315;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            border-bottom: 3px solid #ff6b35;
+            padding-bottom: 5px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #ff8c42;
+        }
+        
+        .criteria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .criteria-item {
+            border: 2px solid #ffccbc;
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(145deg, #ffffff, #fff8f5);
+            box-shadow: 0 2px 4px rgba(255, 107, 53, 0.1);
+        }
+        
+        .criteria-item:hover {
+            border-color: #ff8c42;
+            background: linear-gradient(145deg, #fff8f5, #ffefe8);
+            box-shadow: 0 4px 8px rgba(255, 107, 53, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .criteria-item.selected {
+            border-color: #ff6b35;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 6px 12px rgba(255, 107, 53, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .skin-type {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 0 auto 8px;
+        }
+        
+        .skin-1 { background: #fdbcb4; }
+        .skin-2 { background: #edbcb4; }
+        .skin-3 { background: #d9a066; }
+        .skin-4 { background: #a67c52; }
+        .skin-5 { background: #8b4513; }
+        .skin-6 { background: #654321; }
+        
+        .location-diagram {
+            width: 60px;
+            height: 80px;
+            margin: 0 auto 8px;
+            background: linear-gradient(180deg, #ffccbc, #ffab91);
+            border-radius: 20px 20px 5px 5px;
+            position: relative;
+            border: 2px solid #ff8c42;
+        }
+        
+        .ink-drop {
+            width: 30px;
+            height: 30px;
+            border-radius: 50% 50% 50% 0;
+            margin: 0 auto 8px;
+            transform: rotate(-45deg);
+            border: 1px solid #ff8c42;
+        }
+        
+        .ink-1 { background: #fff3e0; }
+        .ink-2 { background: #ffcc80; }
+        .ink-3 { background: #ff8c42; }
+        .ink-4 { background: #ff6b35; }
+        
+        .layering-lines {
+            height: 30px;
+            margin: 0 auto 8px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .line {
+            height: 3px;
+            background: #ff6b35;
+            margin: 2px 0;
+            border-radius: 2px;
+        }
+        
+        .color-wheel {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 0 auto 8px;
+            position: relative;
+        }
+        
+        .scarring-wave {
+            height: 30px;
+            margin: 0 auto 8px;
+            background: repeating-linear-gradient(
+                to right,
+                #ffccbc 0px,
+                #ffccbc 5px,
+                #ff8c42 5px,
+                #ff8c42 10px
+            );
+            border-radius: 4px;
+        }
+        
+        .score-display {
+            background: linear-gradient(135deg, #ff6b35, #d84315);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        
+        .treatment-estimate {
+            background: linear-gradient(145deg, #fff8f5, #ffefe8);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 15px;
+            border-left: 5px solid #ff6b35;
+            box-shadow: 0 3px 6px rgba(255, 107, 53, 0.1);
+            color: #d84315;
+        }
+        
+        .note {
+            background: linear-gradient(145deg, #fff8f5, #ffefe8);
+            border: 2px solid #ffccbc;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #d84315;
+            border-left: 4px solid #ff8c42;
+        }
+        
+        .vtct-branding {
+            background: linear-gradient(145deg, #fff8f5, #ffffff);
+            padding: 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #d84315;
+            border-top: 3px solid #ff6b35;
+        }
+        
+        @media (max-width: 600px) {
+            .criteria-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+            
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scale-container">
+        <div class="header">
+            <h1>Kirby-Desai Tattoo Removal Scale</h1>
+            <p>VTCT Level 5 Laser Tattoo Removal Assessment Tool</p>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Skin Type (Fitzpatrick Scale)</div>
+            <div class="criteria-grid">
+                <div class="criteria-item" data-points="1" data-category="skin">
+                    <div class="skin-type skin-1"></div>
+                    <div><strong>Type I</strong></div>
+                    <div>Very Fair</div>
+                    <div>Always Burns</div>
+                    <div><strong>1 point</strong></div>
+                </div>
+                <div class="criteria-item" data-points="2" data-category="skin">
+                    <div class="skin-type skin-2"></div>
+                    <div><strong>Type II</strong></div>
+                    <div>Fair</div>
+                    <div>Usually Burns</div>
+                    <div><strong>2 points</strong></div>
+                </div>
+                <div class="criteria-item" data-points="3" data-category="skin">
+                    <div class="skin-type skin-3"></div>
+                    <div><strong>Type III</strong></div>
+                    <div>Medium</div>
+                    <div>Sometimes Burns</div>
+                    <div><strong>3 points</strong></div>
+                </div>
+                <div class="criteria-item" data-points="4" data-category="skin">
+                    <div class="skin-type skin-4"></div>
+                    <div><strong>Type IV</strong></div>
+                    <div>Olive</div>
+                    <div>Rarely Burns</div>
+                    <div><strong>4 points</strong></div>
+                </div>
+                <div class="criteria-item" data-points="5" data-category="skin">
+                    <div class="skin-type skin-5"></div>
+                    <div><strong>Type V</strong></div>
+                    <div>Brown</div>
+                    <div>Very Rarely Burns</div>
+                    <div><strong>5 points</strong></div>
+                </div>
+                <div class="criteria-item" data-points="6" data-category="skin">
+                    <div class="skin-type skin-6"></div>
+                    <div><strong>Type VI</strong></div>
+                    <div>Dark Brown/Black</div>
+                    <div>Never Burns</div>
+                    <div><strong>6 points</strong></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Location on Body</div>
+            <div class="criteria-grid">
+                <div class="criteria-item" data-points="1" data-category="location">
+                    <div class="location-diagram"></div>
+                    <div><strong>Head/Neck</strong></div>
+                    <div>Excellent circulation</div>
+                    <div><strong>1 point</strong></div>
+                </div>
+                <div class="criteria-item" data-points="2" data-category="location">
+                    <div class="location-diagram"></div>
+                    <div><strong>Upper Torso</strong></div>
+                    <div>Good circulation</div>
+                    <div><strong>2 points</strong></div>
+                </div>
+                <div class="criteria-item" data-points="3" data-category="location">
+                    <div class="location-diagram"></div>
+                    <div><strong>Lower Torso</strong></div>
+                    <div>Moderate circulation</div>
+                    <div><strong>3 points</strong></div>
+                </div>
+                <div class="criteria-item" data-points="4" data-category="location">
+                    <div class="location-diagram"></div>
+                    <div><strong>Upper Extremities</strong></div>
+                    <div>Arms & Upper Legs</div>
+                    <div><strong>4 points</strong></div>
+                </div>
+                <div class="criteria-item" data-points="5" data-category="location">
+                    <div class="location-diagram"></div>
+                    <div><strong>Lower Extremities</strong></div>
+                    <div>Hands, Feet, Lower Legs</div>
+                    <div><strong>5 points</strong></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Amount of Ink</div>
+            <div class="criteria-grid">
+                <div class="criteria-item" data-points="1" data-category="ink">
+                    <div class="ink-drop ink-1"></div>
+                    <div><strong>Minimal</strong></div>
+                    <div>Fine line work</div>
+                    <div><strong>1 point</strong></div>
+                </div>
+                <div class="criteria-item" data-points="2" data-category="ink">
+                    <div class="ink-drop ink-2"></div>
+                    <div><strong>Moderate</strong></div>
+                    <div>Some shading</div>
+                    <div><strong>2 points</strong></div>
+                </div>
+                <div class="criteria-item" data-points="3" data-category="ink">
+                    <div class="ink-drop ink-3"></div>
+                    <div><strong>Significant</strong></div>
+                    <div>Heavy shading</div>
+                    <div><strong>3 points</strong></div>
+                </div>
+                <div class="criteria-item" data-points="4" data-category="ink">
+                    <div class="ink-drop ink-4"></div>
+                    <div><strong>Very Dense</strong></div>
+                    <div>Solid black areas</div>
+                    <div><strong>4 points</strong></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Layering</div>
+            <div class="criteria-grid">
+                <div class="criteria-item" data-points="0" data-category="layering">
+                    <div class="layering-lines">
+                        <div class="line" style="width: 40px;"></div>
+                    </div>
+                    <div><strong>Single Layer</strong></div>
+                    <div>Original tattoo only</div>
+                    <div><strong>0 points</strong></div>
+                </div>
+                <div class="criteria-item" data-points="2" data-category="layering">
+                    <div class="layering-lines">
+                        <div class="line" style="width: 40px;"></div>
+                        <div class="line" style="width: 35px;"></div>
+                    </div>
+                    <div><strong>Reworked</strong></div>
+                    <div>Cover-up or touch-up</div>
+                    <div><strong>2 points</strong></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Scarring & Tissue Changes</div>
+            <div class="criteria-grid">
+                <div class="criteria-item" data-points="0" data-category="scarring">
+                    <div class="scarring-wave" style="background: linear-gradient(145deg, #fff8f5, #ffefe8); border: 1px solid #ffccbc;"></div>
+                    <div><strong>No Scarring</strong></div>
+                    <div>Smooth skin texture</div>
+                    <div><strong>0 points</strong></div>
+                </div>
+                <div class="criteria-item" data-points="1" data-category="scarring">
+                    <div class="scarring-wave" style="background: repeating-linear-gradient(to right, #ffccbc 0px, #ffccbc 2px, #fff8f5 2px, #fff8f5 4px);"></div>
+                    <div><strong>Minimal</strong></div>
+                    <div>Slight texture changes</div>
+                    <div><strong>1 point</strong></div>
+                </div>
+                <div class="criteria-item" data-points="3" data-category="scarring">
+                    <div class="scarring-wave"></div>
+                    <div><strong>Moderate</strong></div>
+                    <div>Visible scarring</div>
+                    <div><strong>3 points</strong></div>
+                </div>
+                <div class="criteria-item" data-points="5" data-category="scarring">
+                    <div class="scarring-wave" style="background: repeating-linear-gradient(45deg, #ff6b35 0px, #ff6b35 5px, #d84315 5px, #d84315 10px);"></div>
+                    <div><strong>Significant</strong></div>
+                    <div>Raised/keloid scarring</div>
+                    <div><strong>5 points</strong></div>
+                </div>
+            </div>
+            <div class="note">
+                <strong>Note:</strong> Pre-existing scars and tissue changes will remain after laser treatment completion.
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Colors Present</div>
+            <div class="criteria-grid">
+                <div class="criteria-item" data-points="1" data-category="colors">
+                    <div class="color-wheel" style="background: #2c3e50; border: 2px solid #ff8c42;"></div>
+                    <div><strong>Black Only</strong></div>
+                    <div>Single color</div>
+                    <div><strong>1 point</strong></div>
+                </div>
+                <div class="criteria-item" data-points="2" data-category="colors">
+                    <div class="color-wheel" style="background: conic-gradient(#2c3e50 0deg 180deg, #e74c3c 180deg 360deg); border: 2px solid #ff8c42;"></div>
+                    <div><strong>Black + Red</strong></div>
+                    <div>Two colors</div>
+                    <div><strong>2 points</strong></div>
+                </div>
+                <div class="criteria-item" data-points="3" data-category="colors">
+                    <div class="color-wheel" style="background: conic-gradient(#2c3e50 0deg 120deg, #3498db 120deg 240deg, #f39c12 240deg 360deg); border: 2px solid #ff8c42;"></div>
+                    <div><strong>3+ Colors</strong></div>
+                    <div>Multiple colors</div>
+                    <div><strong>3 points</strong></div>
+                </div>
+                <div class="criteria-item" data-points="4" data-category="colors">
+                    <div class="color-wheel" style="background: conic-gradient(#2c3e50 0deg 60deg, #e74c3c 60deg 120deg, #f39c12 120deg 180deg, #27ae60 180deg 240deg, #3498db 240deg 300deg, #9b59b6 300deg 360deg); border: 2px solid #ff8c42;"></div>
+                    <div><strong>Multiple + Resistant</strong></div>
+                    <div>Green, yellow, fluorescent</div>
+                    <div><strong>4 points</strong></div>
+                </div>
+            </div>
+            <div class="note">
+                <strong>Note:</strong> Resistant colors (green, yellow, white, fluorescent) require specialized laser wavelengths and may need additional treatments.
+            </div>
+        </div>
+        
+        <div class="score-display">
+            <div>Total Score: <span id="totalScore">0</span> points</div>
+            <div class="treatment-estimate" id="treatmentEstimate">
+                Select criteria above to calculate estimated treatments
+            </div>
+        </div>
+        
+        <div class="vtct-branding">
+            <p><strong>VTCT Level 5 Laser Tattoo Removal</strong></p>
+            <p>Professional Assessment Tool - For Educational and Clinical Use</p>
+            <p>Always perform thorough consultation and consider individual patient factors</p>
+        </div>
+    </div>
+
+    <script>
+        let selectedCriteria = {};
+        
+        document.querySelectorAll('.criteria-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const category = this.dataset.category;
+                const points = parseInt(this.dataset.points);
+                
+                // Remove selection from other items in same category
+                document.querySelectorAll(`[data-category="${category}"]`).forEach(el => {
+                    el.classList.remove('selected');
+                });
+                
+                // Add selection to clicked item
+                this.classList.add('selected');
+                
+                // Update selected criteria
+                selectedCriteria[category] = points;
+                
+                updateScore();
+            });
+        });
+        
+        function updateScore() {
+            const total = Object.values(selectedCriteria).reduce((sum, points) => sum + points, 0);
+            document.getElementById('totalScore').textContent = total;
+            
+            // Calculate estimated treatments based on Kirby-Desai formula
+            let estimatedTreatments;
+            let description;
+            
+            if (total <= 6) {
+                estimatedTreatments = "3-6";
+                description = "Excellent candidate - Minimal treatments required";
+            } else if (total <= 9) {
+                estimatedTreatments = "6-10";
+                description = "Good candidate - Average number of treatments";
+            } else if (total <= 13) {
+                estimatedTreatments = "10-15";
+                description = "Moderate candidate - Above average treatments needed";
+            } else if (total <= 17) {
+                estimatedTreatments = "15-20";
+                description = "Challenging candidate - Many treatments required";
+            } else {
+                estimatedTreatments = "20+";
+                description = "Very challenging - Extensive treatment course needed";
+            }
+            
+            document.getElementById('treatmentEstimate').innerHTML = `
+                <strong>Estimated Treatment Sessions: ${estimatedTreatments}</strong><br>
+                ${description}<br>
+                <em style="font-size: 14px; color: #666;">
+                Treatments spaced 6-8 weeks apart. Individual results may vary based on immune response, lifestyle factors, and adherence to aftercare protocols.
+                </em>
+            `;
+        }
+    </script>
+</body>
+</html>
