@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photosensitive Medication Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.1; }
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .search-section {
+            padding: 40px;
+            background: #fff7ed;
+            border-bottom: 1px solid #fed7aa;
+        }
+
+        .search-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 16px 24px 16px 60px;
+            border: 2px solid #fed7aa;
+            border-radius: 50px;
+            font-size: 16px;
+            background: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #f97316;
+            box-shadow: 0 4px 20px rgba(249, 115, 22, 0.15);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            font-size: 20px;
+        }
+
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid #fed7aa;
+            border-radius: 25px;
+            background: white;
+            color: #9a3412;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #f97316;
+            border-color: #f97316;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+            opacity: 1;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .category-card.hidden {
+            opacity: 0;
+            transform: scale(0.8);
+            pointer-events: none;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+
+        .category-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1f2937;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .expand-icon {
+            font-size: 20px;
+            color: #f97316;
+            transition: transform 0.3s ease;
+        }
+
+        .category-card.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .medication-list {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .category-card.expanded .medication-list {
+            max-height: 500px;
+        }
+
+        .medication-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .medication-item:last-child {
+            border-bottom: none;
+        }
+
+        .medication-name {
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .generic-name {
+            color: #6b7280;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .risk-badge {
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .risk-high {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .risk-medium {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .risk-low {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .warning-section {
+            background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
+            border-left: 5px solid #f97316;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 10px;
+        }
+
+        .warning-title {
+            font-weight: 600;
+            color: #9a3412;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .warning-text {
+            color: #7c2d12;
+            line-height: 1.7;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: space-around;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #f97316;
+            display: block;
+        }
+
+        .stat-label {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .category-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .filters {
+                justify-content: flex-start;
+            }
+            
+            .stats-bar {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Photosensitive Medication Guide</h1>
+            <p>Comprehensive guide to medications that may increase sun sensitivity</p>
+        </div>
+
+        <div class="search-section">
+            <div class="search-container">
+                <div class="search-icon">🔍</div>
+                <input type="text" class="search-input" id="searchInput" placeholder="Search medications or categories...">
+            </div>
+            <div class="filters" id="filters">
+                <button class="filter-btn active" data-category="all">All Categories</button>
+                <button class="filter-btn" data-category="antibiotics">Antibiotics</button>
+                <button class="filter-btn" data-category="antidepressants">Antidepressants</button>
+                <button class="filter-btn" data-category="cardiac">Heart Medications</button>
+                <button class="filter-btn" data-category="diuretics">Diuretics</button>
+                <button class="filter-btn" data-category="herbal">Herbal</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <span class="stat-number" id="totalMeds">150+</span>
+                    <div class="stat-label">Total Medications</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">12</span>
+                    <div class="stat-label">Categories</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="visibleMeds">150+</span>
+                    <div class="stat-label">Currently Showing</div>
+                </div>
+            </div>
+
+            <div class="warning-section">
+                <div class="warning-title">
+                    ⚠️ Important Safety Information
+                </div>
+                <div class="warning-text">
+                    The use of photosensitizing medications alone or in combination may cause hyperpigmentation, hypopigmentation, dermatitis, blister formation, or burns. Increased sensitivity to laser procedures may also occur. Always consult with your healthcare provider and perform test treatments when outcomes are uncertain.
+                </div>
+            </div>
+
+            <div class="category-grid" id="categoryGrid">
+                <!-- Categories will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const medicationData = {
+            "acne": {
+                title: "Acne Medications",
+                medications: [
+                    { name: "Isotretinoin", generic: "Accutane", risk: "high" },
+                    { name: "Tretinoin", generic: "Retin-A", risk: "high" }
+                ]
+            },
+            "anticancer": {
+                title: "Anticancer Drugs",
+                medications: [
+                    { name: "Dacarbazine", generic: "DTIC-Dome", risk: "high" },
+                    { name: "Fluorouracil", generic: "Fluoroplex", risk: "high" },
+                    { name: "Methotrexate", generic: "Mexate", risk: "high" },
+                    { name: "Vinblastine", generic: "Velban", risk: "high" }
+                ]
+            },
+            "antidepressants": {
+                title: "Antidepressants",
+                medications: [
+                    { name: "Amitriptyline", generic: "Elavil", risk: "medium" },
+                    { name: "Bupropion", generic: "", risk: "medium" },
+                    { name: "Clomipramine", generic: "", risk: "medium" },
+                    { name: "Desipramine", generic: "Norpramine, Petrofrane", risk: "medium" },
+                    { name: "Doxepin", generic: "Adapin, Sinequan", risk: "medium" },
+                    { name: "Fluoxetine", generic: "Prozac", risk: "medium" },
+                    { name: "Imipramine", generic: "Tofranil", risk: "medium" },
+                    { name: "Maprotiline", generic: "", risk: "medium" },
+                    { name: "Mirtazapine", generic: "Remeron", risk: "medium" },
+                    { name: "Nortriptyline", generic: "Aventyl, Pamelor", risk: "medium" },
+                    { name: "Paroxetine", generic: "Paxil", risk: "medium" },
+                    { name: "Sertraline", generic: "Zoloft", risk: "medium" },
+                    { name: "Trimipramine", generic: "Surmontil", risk: "medium" }
+                ]
+            },
+            "antihistamines": {
+                title: "Antihistamines",
+                medications: [
+                    { name: "Astemizole", generic: "", risk: "low" },
+                    { name: "Brompheniramine", generic: "", risk: "low" },
+                    { name: "Cetirizine", generic: "", risk: "low" },
+                    { name: "Cyproheptadine", generic: "Periactin", risk: "low" },
+                    { name: "Diphenhydramine", generic: "Benadryl", risk: "low" },
+                    { name: "Loratadine", generic: "Claritin", risk: "low" },
+                    { name: "Terfenadine", generic: "", risk: "low" }
+                ]
+            },
+            "antibiotics": {
+                title: "Antibiotics",
+                medications: [
+                    { name: "Azithromycin", generic: "Zithromax", risk: "high" },
+                    { name: "Demeclocycline", generic: "Declomycin", risk: "high" },
+                    { name: "Doxycycline", generic: "Vibramycin", risk: "high" },
+                    { name: "Griseofulvin", generic: "Fulvicin U/F", risk: "high" },
+                    { name: "Lomefloxacin", generic: "Maxaquin", risk: "high" },
+                    { name: "Minocycline", generic: "", risk: "high" },
+                    { name: "Nalidixic acid", generic: "NegGram", risk: "high" },
+                    { name: "Oxytetracycline", generic: "Terramycin", risk: "high" },
+                    { name: "Sulfamethoxazole/Trimethoprim", generic: "Bactrim, Septra", risk: "high" },
+                    { name: "Sulfisoxazole", generic: "Gantrisin", risk: "high" }
+                ]
+            },
+            "antipsychotics": {
+                title: "Antipsychotic Medications",
+                medications: [
+                    { name: "Chlorpromazine", generic: "Thorazine", risk: "high" },
+                    { name: "Fluphenazine", generic: "Permitil, Prolixin", risk: "high" },
+                    { name: "Haloperidol", generic: "Haldol", risk: "medium" },
+                    { name: "Perphenazine", generic: "Trilafon", risk: "medium" },
+                    { name: "Prochlorperazine", generic: "Compazine", risk: "medium" },
+                    { name: "Risperidone", generic: "", risk: "medium" },
+                    { name: "Promethazine", generic: "Phenergan", risk: "medium" },
+                    { name: "Thioridazine", generic: "Mellaril", risk: "high" }
+                ]
+            },
+            "cardiac": {
+                title: "Cardiac Medications",
+                medications: [
+                    { name: "ACE Inhibitors", generic: "Vasotec", risk: "medium" },
+                    { name: "Amiodarone", generic: "Cordarone", risk: "high" },
+                    { name: "Diltiazem", generic: "Cardizem", risk: "low" },
+                    { name: "Disopyramide", generic: "Norpace", risk: "medium" },
+                    { name: "Losartan", generic: "", risk: "low" },
+                    { name: "Lovastatin", generic: "Mevacor", risk: "low" },
+                    { name: "Pravastatin", generic: "Pravachol", risk: "low" },
+                    { name: "Quinidine", generic: "", risk: "medium" },
+                    { name: "Simvastatin", generic: "Zocor", risk: "low" }
+                ]
+            },
+            "diuretics": {
+                title: "Diuretics (Water Pills)",
+                medications: [
+                    { name: "Furosemide", generic: "Lasix", risk: "medium" },
+                    { name: "Hydrochlorothiazide", generic: "HCTZ", risk: "high" },
+                    { name: "Chlorthalidone", generic: "Diuril", risk: "high" },
+                    { name: "Amiloride", generic: "Midamor", risk: "medium" },
+                    { name: "Metolazone", generic: "Zaroxolyn", risk: "high" },
+                    { name: "Acetazolamide", generic: "Diamox", risk: "medium" }
+                ]
+            },
+            "hypoglycemics": {
+                title: "Diabetes Medications",
+                medications: [
+                    { name: "Chlorpropamide", generic: "Diabinese", risk: "medium" },
+                    { name: "Glimepiride", generic: "", risk: "low" },
+                    { name: "Glipizide", generic: "", risk: "low" },
+                    { name: "Glyburide", generic: "", risk: "low" },
+                    { name: "Tolazamide", generic: "Tolinase", risk: "medium" },
+                    { name: "Tolbutamide", generic: "Orinase", risk: "medium" }
+                ]
+            },
+            "hormonal": {
+                title: "Hormonal Medications",
+                medications: [
+                    { name: "Estrogen Replacement", generic: "", risk: "low" },
+                    { name: "Oral Contraceptives", generic: "Birth Control Pills", risk: "low" },
+                    { name: "Other Hormones", generic: "", risk: "low" }
+                ]
+            },
+            "herbal": {
+                title: "Herbal Medicines",
+                medications: [
+                    { name: "St. John's Wort", generic: "Hypericum perforatum", risk: "high" },
+                    { name: "Angelica", generic: "Angelica species", risk: "high" },
+                    { name: "Bergamot", generic: "Citrus bergamia", risk: "medium" },
+                    { name: "Celery", generic: "Apium graveolens", risk: "medium" },
+                    { name: "Dill", generic: "Anethum graveolens", risk: "medium" },
+                    { name: "Fennel", generic: "Foeniculum vulgare", risk: "medium" },
+                    { name: "Parsley", generic: "Petroselinum sativum", risk: "medium" },
+                    { name: "Rue", generic: "Ruta graveolens", risk: "high" },
+                    { name: "Yarrow", generic: "Achillea millefolium", risk: "medium" }
+                ]
+            }
+        };
+
+        let currentFilter = 'all';
+        let searchTerm = '';
+
+        function getRiskBadge(risk) {
+            const riskClasses = {
+                high: 'risk-high',
+                medium: 'risk-medium',
+                low: 'risk-low'
+            };
+            return `<span class="risk-badge ${riskClasses[risk]}">${risk} risk</span>`;
+        }
+
+        function createCategoryCard(categoryKey, categoryData) {
+            const medications = categoryData.medications.map(med => `
+                <div class="medication-item">
+                    <div>
+                        <div class="medication-name">${med.name}</div>
+                        ${med.generic ? `<div class="generic-name">${med.generic}</div>` : ''}
+                    </div>
+                    ${getRiskBadge(med.risk)}
+                </div>
+            `).join('');
+
+            return `
+                <div class="category-card" data-category="${categoryKey}">
+                    <div class="category-header">
+                        <h3 class="category-title">${categoryData.title}</h3>
+                        <span class="expand-icon">▼</span>
+                    </div>
+                    <div class="medication-list">
+                        ${medications}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderCategories() {
+            const grid = document.getElementById('categoryGrid');
+            grid.innerHTML = Object.entries(medicationData)
+                .map(([key, data]) => createCategoryCard(key, data))
+                .join('');
+
+            // Add click handlers for expansion
+            document.querySelectorAll('.category-header').forEach(header => {
+                header.addEventListener('click', function() {
+                    const card = this.parentElement;
+                    card.classList.toggle('expanded');
+                });
+            });
+        }
+
+        function filterCategories() {
+            const cards = document.querySelectorAll('.category-card');
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const categoryKey = card.dataset.category;
+                const categoryData = medicationData[categoryKey];
+                
+                let shouldShow = false;
+
+                // Filter by category
+                if (currentFilter === 'all') {
+                    shouldShow = true;
+                } else {
+                    shouldShow = categoryKey === currentFilter || 
+                                categoryKey.includes(currentFilter) ||
+                                categoryData.title.toLowerCase().includes(currentFilter);
+                }
+
+                // Filter by search term
+                if (shouldShow && searchTerm) {
+                    const matchesTitle = categoryData.title.toLowerCase().includes(searchTerm.toLowerCase());
+                    const matchesMedication = categoryData.medications.some(med => 
+                        med.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        (med.generic && med.generic.toLowerCase().includes(searchTerm.toLowerCase()))
+                    );
+                    shouldShow = matchesTitle || matchesMedication;
+                }
+
+                if (shouldShow) {
+                    card.classList.remove('hidden');
+                    visibleCount += categoryData.medications.length;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            document.getElementById('visibleMeds').textContent = visibleCount;
+        }
+
+        // Event listeners
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            searchTerm = e.target.value;
+            filterCategories();
+        });
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                currentFilter = this.dataset.category;
+                filterCategories();
+            });
+        });
+
+        // Initialize
+        renderCategories();
+        filterCategories();
+    </script>
+</body>
+</html>
