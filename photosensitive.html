@@ -106,33 +106,6 @@
             font-size: 20px;
         }
 
-        .filters {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .filter-btn {
-            padding: 10px 20px;
-            border: 2px solid #fed7aa;
-            border-radius: 25px;
-            background: white;
-            color: #9a3412;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .filter-btn:hover, .filter-btn.active {
-            background: #f97316;
-            border-color: #f97316;
-            color: white;
-            transform: translateY(-2px);
-        }
-
         .content {
             padding: 40px;
         }
@@ -307,10 +280,6 @@
                 gap: 20px;
             }
             
-            .filters {
-                justify-content: flex-start;
-            }
-            
             .stats-bar {
                 flex-direction: column;
                 gap: 20px;
@@ -329,14 +298,6 @@
             <div class="search-container">
                 <div class="search-icon">🔍</div>
                 <input type="text" class="search-input" id="searchInput" placeholder="Search medications or categories...">
-            </div>
-            <div class="filters" id="filters">
-                <button class="filter-btn active" data-category="all">All Categories</button>
-                <button class="filter-btn" data-category="antibiotics">Antibiotics</button>
-                <button class="filter-btn" data-category="antidepressants">Antidepressants</button>
-                <button class="filter-btn" data-category="cardiac">Heart Medications</button>
-                <button class="filter-btn" data-category="diuretics">Diuretics</button>
-                <button class="filter-btn" data-category="herbal">Herbal</button>
             </div>
         </div>
 
@@ -507,7 +468,6 @@
             }
         };
 
-        let currentFilter = 'all';
         let searchTerm = '';
 
         function getRiskBadge(risk) {
@@ -566,19 +526,10 @@
                 const categoryKey = card.dataset.category;
                 const categoryData = medicationData[categoryKey];
                 
-                let shouldShow = false;
-
-                // Filter by category
-                if (currentFilter === 'all') {
-                    shouldShow = true;
-                } else {
-                    shouldShow = categoryKey === currentFilter || 
-                                categoryKey.includes(currentFilter) ||
-                                categoryData.title.toLowerCase().includes(currentFilter);
-                }
+                let shouldShow = true;
 
                 // Filter by search term
-                if (shouldShow && searchTerm) {
+                if (searchTerm) {
                     const matchesTitle = categoryData.title.toLowerCase().includes(searchTerm.toLowerCase());
                     const matchesMedication = categoryData.medications.some(med => 
                         med.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -602,18 +553,6 @@
         document.getElementById('searchInput').addEventListener('input', function(e) {
             searchTerm = e.target.value;
             filterCategories();
-        });
-
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Remove active class from all buttons
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
-                this.classList.add('active');
-                
-                currentFilter = this.dataset.category;
-                filterCategories();
-            });
         });
 
         // Initialize
