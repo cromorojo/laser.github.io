@@ -427,68 +427,8 @@
             }
         }
 
-        /* Dark mode support */
-        @media (prefers-color-scheme: dark) {
-            body {
-                background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
-            }
-
-            .container {
-                background: #1f2937;
-            }
-
-            .search-section {
-                background: #374151;
-                border-bottom-color: #4b5563;
-            }
-
-            .search-input {
-                background: #374151;
-                border-color: #4b5563;
-                color: white;
-            }
-
-            .search-input:focus {
-                border-color: #f97316;
-            }
-
-            .stats-bar,
-            .category-card {
-                background: #374151;
-                border-color: #4b5563;
-            }
-
-            .category-header {
-                background: #4b5563;
-                border-bottom-color: #6b7280;
-            }
-
-            .category-header:active {
-                background: #6b7280;
-            }
-
-            .medication-list {
-                background: #374151;
-            }
-
-            .medication-item {
-                border-bottom-color: #4b5563;
-            }
-
-            .category-title,
-            .medication-name {
-                color: #f9fafb;
-            }
-
-            .generic-name,
-            .stat-label {
-                color: #d1d5db;
-            }
-
-            .warning-section {
-                background: linear-gradient(135deg, #451a03 0%, #78350f 100%);
-            }
-        }
+        /* Dark mode removed - keeping light theme only */
+        /* If you want to add dark mode back with user control, you would need JavaScript toggle */
     </style>
 </head>
 <body>
